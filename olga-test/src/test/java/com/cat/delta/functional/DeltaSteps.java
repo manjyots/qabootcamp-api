@@ -26,7 +26,7 @@ public class DeltaSteps extends ManageTest {
 
     @Given("^I run delta test$")
     public void accessHomePage() {
-        testWebDriver.get("https://m.delta.com/?p=homeScreen");
+        testWebDriver.get(BASE_URL);
         testWebDriver.waitForPageToLoad();
         testWebDriver.findElement(By.xpath("//input[@class='origin']")).click();
         testWebDriver.waitForPageToLoad();
