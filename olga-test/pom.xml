@@ -105,5 +105,20 @@
                     <artifactId>selenium-api</artifactId>
                     <version>${selenium-version}</version>
                 </dependency>
+
+                <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+                <dependency>
+                    <groupId>io.appium</groupId>
+                    <artifactId>java-client</artifactId>
+                    <version>5.0.4</version>
+                </dependency>
+
+
+
+
+
+
+
+
             </dependencies>
 </project>
