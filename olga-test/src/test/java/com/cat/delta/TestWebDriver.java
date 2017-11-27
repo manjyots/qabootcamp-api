@@ -20,7 +20,7 @@ public class TestWebDriver {
 
     public TestWebDriver(WebDriver driver) {
         TestWebDriver.driver = driver;
-        maximizeBrowser();
+//        maximizeBrowser();
     }
 
 

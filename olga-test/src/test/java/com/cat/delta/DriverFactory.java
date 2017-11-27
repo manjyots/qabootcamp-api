@@ -46,9 +46,11 @@ public class DriverFactory {
     public WebDriver loadDriverForMobile(ReadProjectProperty readProjectProperty) throws InterruptedException, IOException {
         DesiredCapabilities dc = new DesiredCapabilities();
         WebDriver driver = null;
-        if (readProjectProperty.getSpecificProjectProperty("driver").equals("android")) {
+        if (readProjectProperty.getSpecificProjectProperty("driver").equalsIgnoreCase("android")) {
+
             return null;
-        } else if (readProjectProperty.getSpecificProjectProperty("driver").equals("ios")) {
+        } else if (readProjectProperty.getSpecificProjectProperty("driver").equalsIgnoreCase("ios")) {
+
             dc.setCapability(MobileCapabilityType.PLATFORM_VERSION, readProjectProperty.getSpecificProjectProperty("osVersion"));
             dc.setCapability(MobileCapabilityType.DEVICE_NAME, readProjectProperty.getSpecificProjectProperty("deviceName"));
             dc.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, readProjectProperty.getSpecificProjectProperty("timeout"));
