@@ -2,7 +2,7 @@
 
 Install NVM >=6
 
-Install appium using nvm
+Install appium 1.7.1 using nvm
 
 npm install -g appium
 

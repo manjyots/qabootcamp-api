@@ -1,5 +1,6 @@
 package com.cat.delta;
 
+import com.cat.delta.pageobject.ShopAndBookHomePage;
 import utils.ReadProjectProperty;
 
 import java.io.IOException;
@@ -14,15 +15,19 @@ public class ManageTest {
     public static String BASE_URL;
     ReadProjectProperty readProjectProperty = null;
 
-
+public ShopAndBookHomePage shopAndBookHomePage =null;
 
     public ManageTest() throws IOException, InterruptedException {
          readProjectProperty = ReadProjectProperty.getInstance();
         BASE_URL = readProjectProperty.getSpecificProjectProperty("DELTA_URL");
+        testWebDriver = new TestWebDriver(driverFactory.loadDriver(readProjectProperty));
+
+        shopAndBookHomePage = new ShopAndBookHomePage(testWebDriver);
+
 
     }
 
-    protected void loadDriver(String browser) throws InterruptedException, IOException {
+    protected void loadDriver() throws InterruptedException, IOException {
         testWebDriver = new TestWebDriver(driverFactory.loadDriver(readProjectProperty));
     }
 
