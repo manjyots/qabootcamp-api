@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utils.ReadProjectProperty;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -70,12 +71,18 @@ public class DriverFactory {
 
     private WebDriver createFirefoxDriver(boolean enableJavascript) throws IOException {
 
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.setAcceptUntrustedCertificates(true);
-        profile.setPreference("signed.applets.codebase_principal_support", true);
-        profile.setPreference("javascript.enabled", enableJavascript);
-        profile.setEnableNativeEvents(true);
-        return new FirefoxDriver(profile);
+//        FirefoxProfile profile = new FirefoxProfile();
+//        profile.setAcceptUntrustedCertificates(true);
+//        profile.setPreference("signed.applets.codebase_principal_support", true);
+//        profile.setPreference("javascript.enabled", enableJavascript);
+//        profile.setEnableNativeEvents(true);
+//        return new FirefoxDriver(profile);
+
+        System.setProperty("webdriver.gecko.driver","/Users/Manjyot/Documents/qabootcamp/olgatestharness/olga-test/src/test/resources/geckodriver");
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability("marionette", false);
+        WebDriver driver = new FirefoxDriver(capabilities);
+        return driver;
     }
 
     private WebDriver createChromeDriver(boolean enableJavascript) throws IOException {
