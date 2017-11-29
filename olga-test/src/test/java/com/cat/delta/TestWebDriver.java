@@ -1,7 +1,7 @@
 package com.cat.delta;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -136,10 +136,10 @@ public class TestWebDriver {
         }
     }
 
-    public void click(final WebElement element) {
-        Actions action = new Actions(driver);
-        action.click(element).perform();
-    }
+//    public void click(final WebElement element) {
+//        Actions action = new Actions(driver);
+//        action.click(element).perform();
+//    }
 
 
 

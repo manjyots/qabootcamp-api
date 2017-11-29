@@ -8,9 +8,8 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import utils.ReadProjectProperty;
-
+import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -60,7 +59,7 @@ public class DriverFactory {
             dc.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.TRUE);
             dc.setCapability(MobileCapabilityType.APP, readProjectProperty.getSpecificProjectProperty("appPath"));
             driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), dc);
-            ((AppiumDriver) driver).manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+//            ((AppiumDriver) driver).manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             return driver;
         }else{
             return null;
@@ -70,12 +69,14 @@ public class DriverFactory {
 
     private WebDriver createFirefoxDriver(boolean enableJavascript) throws IOException {
 
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.setAcceptUntrustedCertificates(true);
-        profile.setPreference("signed.applets.codebase_principal_support", true);
-        profile.setPreference("javascript.enabled", enableJavascript);
-        profile.setEnableNativeEvents(true);
-        return new FirefoxDriver(profile);
+//        FirefoxProfile profile = new FirefoxProfile();
+//        profile.setAcceptUntrustedCertificates(true);
+//        profile.setPreference("signed.applets.codebase_principal_support", true);
+//        profile.setPreference("javascript.enabled", enableJavascript);
+//        profile.setEnableNativeEvents(true);
+//        return new FirefoxDriver(profile);
+        System.setProperty("webdriver.gecko.driver", "/Users/nikhiljain/QA_BOOTCAMP/test/qabootcamp-api/olga-test/geckodriver");
+        return new FirefoxDriver();
     }
 
     private WebDriver createChromeDriver(boolean enableJavascript) throws IOException {

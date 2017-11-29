@@ -15,7 +15,7 @@ public class HomePage extends Page {
     @FindBy(how = How.ID, using = "logout")
     public static WebElement logoutButton = null;
 
-    @iOSFindBy(id = "DONE")
+    @iOSFindBy(accessibility = "DONE")
     public WebElement correctIconOnSplashScreen;
 
     public void clickOnCorrectIcon(){

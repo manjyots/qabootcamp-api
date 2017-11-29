@@ -20,14 +20,15 @@ public class DeltaSteps extends ManageTest {
 
     @Before("@delta")
     public void beforeDelta() throws IOException, InterruptedException {
-        testWebDriver.get(BASE_URL);
+//        testWebDriver.get(BASE_URL);
     }
 
 
     @Given("^I run delta test$")
     public void accessHomePage() {
 
-        testWebDriver.waitForPageToLoad();
+//        testWebDriver.waitForPageToLoad();
+        homePage.clickOnCorrectIcon();
         shopAndBookHomePage.selectOneWayTrip();
         shopAndBookHomePage.selectDestinationCity("ATL");
         shopAndBookHomePage.selectOriginCity("LAX");
