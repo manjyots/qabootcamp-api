@@ -1,4 +1,4 @@
-package com.cat.delta;
+package com.cat.delta.driver;
 
 
 import org.openqa.selenium.WebDriver;
@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import utils.ReadProjectProperty;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 
 public class DriverFactory {
@@ -16,11 +17,14 @@ public class DriverFactory {
 
 
     public WebDriver loadDriver(ReadProjectProperty readProjectProperty) throws InterruptedException, IOException {
+        WebDriver driver = null;
         if (readProjectProperty.getSpecificProjectProperty("driver").equals("firefox")) {
-            return createFirefoxDriver(enableJavascript);
+            driver = createFirefoxDriver(enableJavascript);
         } else {
-            return createChromeDriver(enableJavascript);
+            driver =createChromeDriver(enableJavascript);
         }
+        driver.manage().timeouts().implicitlyWait(Integer.parseInt(readProjectProperty.getSpecificProjectProperty("timeout").trim()), TimeUnit.SECONDS);
+        return driver;
     }
 
     private WebDriver createFirefoxDriver(boolean enableJavascript) throws IOException {
