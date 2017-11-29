@@ -78,7 +78,7 @@ public class DriverFactory {
 //        profile.setEnableNativeEvents(true);
 //        return new FirefoxDriver(profile);
 
-        System.setProperty("webdriver.gecko.driver","/Users/Manjyot/Documents/qabootcamp/olgatestharness/olga-test/src/test/resources/geckodriver");
+        System.setProperty("webdriver.gecko.driver",new File("/olga-test/src/test/resources/geckodriver").getAbsolutePath());
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         capabilities.setCapability("marionette", false);
         WebDriver driver = new FirefoxDriver(capabilities);
