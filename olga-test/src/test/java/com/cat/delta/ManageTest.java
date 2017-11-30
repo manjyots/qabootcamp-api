@@ -3,6 +3,7 @@ package com.cat.delta;
 import com.cat.delta.driver.DriverFactory;
 import com.cat.delta.driver.TestWebDriver;
 import com.cat.delta.pages.HomePage;
+import com.cat.delta.pages.LoginPage;
 import com.cat.delta.pages.ShopAndBookPage;
 import utils.ReadProjectProperty;
 
@@ -20,13 +21,17 @@ public class ManageTest {
 
     protected HomePage homePage = null;
     protected ShopAndBookPage shopAndBookPage = null;
+    protected LoginPage loginPage = null;
 
     public ManageTest() throws IOException, InterruptedException {
-         readProjectProperty = ReadProjectProperty.getInstance();
+
+        readProjectProperty = ReadProjectProperty.getInstance();
         BASE_URL = readProjectProperty.getSpecificProjectProperty("DELTA_URL");
         testWebDriver = new TestWebDriver(driverFactory.loadDriver(readProjectProperty));
         homePage = new HomePage(testWebDriver);
         shopAndBookPage = new ShopAndBookPage(testWebDriver);
+        loginPage = new LoginPage(testWebDriver);
+
     }
 
 

@@ -37,44 +37,50 @@
     </repositories>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>1.1.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>1.1.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.picocontainer</groupId>
+            <artifactId>picocontainer</artifactId>
+            <version>2.14.3</version>
+            <scope>test</scope>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.seleniumhq.selenium</groupId>-->
+            <!--<artifactId>selenium-java</artifactId>-->
+            <!--<version>${selenium-version}</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.seleniumhq.selenium</groupId>-->
+            <!--<artifactId>selenium-server</artifactId>-->
+            <!--<version>${selenium-version}</version>-->
+        <!--</dependency>-->
 
 
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>5.0.1</version>
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.seleniumhq.selenium</groupId>-->
+                    <!--<artifactId>selenium-java</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        </dependency>
 
 
-            <dependencies>
-                <dependency>
-                    <groupId>info.cukes</groupId>
-                    <artifactId>cucumber-picocontainer</artifactId>
-                    <version>1.1.6</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>info.cukes</groupId>
-                    <artifactId>cucumber-junit</artifactId>
-                    <version>1.1.6</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.picocontainer</groupId>
-                    <artifactId>picocontainer</artifactId>
-                    <version>2.14.3</version>
-                    <scope>test</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-java</artifactId>
-                    <version>${selenium-version}</version>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-server</artifactId>
-                    <version>${selenium-version}</version>
-                </dependency>
-
-
-
-
-
-            </dependencies>
+    </dependencies>
 </project>

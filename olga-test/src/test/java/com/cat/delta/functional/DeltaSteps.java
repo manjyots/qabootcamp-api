@@ -2,13 +2,11 @@ package com.cat.delta.functional;
 
 import com.cat.delta.ManageTest;
 import com.cat.delta.common.FlightSearchDetails;
-import cucumber.api.DataTable;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import junit.framework.Assert;
-import org.openqa.selenium.By;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,7 +20,7 @@ public class DeltaSteps extends ManageTest {
         super();
     }
 
-    @Before("@delta")
+    @Before("@web")
     public void beforeDelta() throws IOException, InterruptedException {
         testWebDriver.get(BASE_URL);
     }
@@ -36,7 +34,6 @@ public class DeltaSteps extends ManageTest {
     public void user_search_for_a_flight(List<FlightSearchDetails> flightSearchDetails) throws Throwable {
 
         FlightSearchDetails fs = flightSearchDetails.get(0);
-        testWebDriver.waitForPageToLoad();
         shopAndBookPage.selectOneWayTrip();
         shopAndBookPage.selectOriginCity(fs.getOrigin());
         shopAndBookPage.selectDestinationCity(fs.getDestination());
@@ -44,7 +41,24 @@ public class DeltaSteps extends ManageTest {
         shopAndBookPage.searchFlight();
     }
 
-    @After("@delta")
+    @Given("^User accept splash screen$")
+    public void user_accept_splash_screen() throws Throwable {
+        homePage.clickOnCorrectIcon();
+    }
+
+    @Then("^User continue as a guest$")
+    public void user_continue_as_a_guest() throws Throwable {
+        loginPage.clickContinueAsGuest();
+    }
+
+    @Then("^User start booking$")
+    public void user_start_booking() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+
+    }
+
+
+    @After("@web")
     public void afterDelta() throws IOException, InterruptedException {
         testWebDriver.quitDriver();
     }
