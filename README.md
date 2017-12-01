@@ -13,3 +13,5 @@ npm install wd
 brew install carthage
 
 npm install -g ios-deploy
+
+happy Testing!!
