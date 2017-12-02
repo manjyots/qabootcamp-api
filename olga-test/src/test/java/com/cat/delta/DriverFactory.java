@@ -27,56 +27,18 @@ public class DriverFactory {
 
     public WebDriver loadDriver(ReadProjectProperty readProjectProperty) throws InterruptedException, IOException {
         this.readProjectProperty = readProjectProperty;
-        if (readProjectProperty.getSpecificProjectProperty("mode").equals("web")) {
             return loadDriverForWeb(readProjectProperty);
-        } else {
-            return loadDriverForMobile(readProjectProperty);
-        }
     }
 
 
     public WebDriver loadDriverForWeb(ReadProjectProperty readProjectProperty) throws InterruptedException, IOException {
-        if (readProjectProperty.getSpecificProjectProperty("driver").equals("firefox")) {
-            return createFirefoxDriver(enableJavascript);
-        } else {
-            return createChromeDriver(enableJavascript);
-        }
+            return createFirefoxDriver();
     }
 
 
-    public WebDriver loadDriverForMobile(ReadProjectProperty readProjectProperty) throws InterruptedException, IOException {
-        DesiredCapabilities dc = new DesiredCapabilities();
-        WebDriver driver = null;
-        if (readProjectProperty.getSpecificProjectProperty("driver").equalsIgnoreCase("android")) {
-
-            return null;
-        } else if (readProjectProperty.getSpecificProjectProperty("driver").equalsIgnoreCase("ios")) {
-
-            dc.setCapability(MobileCapabilityType.PLATFORM_VERSION, readProjectProperty.getSpecificProjectProperty("osVersion"));
-            dc.setCapability(MobileCapabilityType.DEVICE_NAME, readProjectProperty.getSpecificProjectProperty("deviceName"));
-            dc.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, readProjectProperty.getSpecificProjectProperty("timeout"));
-            dc.setCapability("locationServicesAuthorized", true);
-            dc.setCapability("autoAcceptAlerts", true);
-            dc.setCapability(MobileCapabilityType.PLATFORM_NAME, readProjectProperty.getSpecificProjectProperty("driver"));
-            dc.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.TRUE);
-            dc.setCapability(MobileCapabilityType.APP, readProjectProperty.getSpecificProjectProperty("appPath"));
-            driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), dc);
-            ((AppiumDriver) driver).manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-            return driver;
-        }else{
-            return null;
-        }
-    }
 
 
-    private WebDriver createFirefoxDriver(boolean enableJavascript) throws IOException {
-
-//        FirefoxProfile profile = new FirefoxProfile();
-//        profile.setAcceptUntrustedCertificates(true);
-//        profile.setPreference("signed.applets.codebase_principal_support", true);
-//        profile.setPreference("javascript.enabled", enableJavascript);
-//        profile.setEnableNativeEvents(true);
-//        return new FirefoxDriver(profile);
+    private WebDriver createFirefoxDriver() throws IOException {
 
         System.setProperty("webdriver.gecko.driver",new File("/olga-test/src/test/resources/geckodriver").getAbsolutePath());
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
@@ -85,10 +47,6 @@ public class DriverFactory {
         return driver;
     }
 
-    private WebDriver createChromeDriver(boolean enableJavascript) throws IOException {
-
-        return null;
-    }
 
 
 }
