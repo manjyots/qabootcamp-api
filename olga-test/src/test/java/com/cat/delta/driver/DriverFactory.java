@@ -2,7 +2,9 @@ package com.cat.delta.driver;
 
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.WebDriver;
@@ -34,7 +36,18 @@ public class DriverFactory {
         DesiredCapabilities dc = new DesiredCapabilities();
         WebDriver driver = null;
         if (readProjectProperty.getSpecificProjectProperty("driver").equalsIgnoreCase("android")) {
-            return null;
+
+            dc.setCapability(MobileCapabilityType.DEVICE_NAME, readProjectProperty.getSpecificProjectProperty("deviceName").trim());
+            dc.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, readProjectProperty.getSpecificProjectProperty("timeout").trim());
+            dc.setCapability(MobileCapabilityType.APP, readProjectProperty.getSpecificProjectProperty("appPath").trim());
+            dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, readProjectProperty.getSpecificProjectProperty("app_package").trim());
+            dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, readProjectProperty.getSpecificProjectProperty("app_activity").trim());
+            dc.setCapability(AndroidMobileCapabilityType.UNICODE_KEYBOARD, true);
+            dc.setCapability(AndroidMobileCapabilityType.RESET_KEYBOARD, true);
+//            dc.setCapability("chromedriverExecutable","/Users/nikhiljain/Downloads/chromedriver");
+            driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), dc);
+
+            return driver;
         } else if (readProjectProperty.getSpecificProjectProperty("driver").equalsIgnoreCase("ios")) {
             dc.setCapability(MobileCapabilityType.PLATFORM_VERSION, readProjectProperty.getSpecificProjectProperty("osVersion").trim());
             dc.setCapability(MobileCapabilityType.DEVICE_NAME, readProjectProperty.getSpecificProjectProperty("deviceName").trim());

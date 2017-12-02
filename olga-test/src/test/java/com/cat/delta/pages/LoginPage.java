@@ -1,6 +1,7 @@
 package com.cat.delta.pages;
 
 import com.cat.delta.driver.TestWebDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +15,7 @@ public class LoginPage extends BasePage {
 
     @FindAll({@FindBy(id="continue_as_guest_btn"),
             @FindBy(id = "CONTINUE AS A GUEST >")})
+    @AndroidFindBy(id = "continue_as_guest_login")
     public List<WebElement> lnkContinueAsGuest;
 
     public void clickContinueAsGuest(){

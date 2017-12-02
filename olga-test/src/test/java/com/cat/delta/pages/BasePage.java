@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class BasePage {
 
@@ -15,7 +16,7 @@ public class BasePage {
     public BasePage(TestWebDriver driver) {
         this.driver = driver;
         if(driver.getDriver() instanceof AppiumDriver){
-            AppiumFieldDecorator appiumFieldDecorator = new AppiumFieldDecorator(driver.getDriver());
+            AppiumFieldDecorator appiumFieldDecorator = new AppiumFieldDecorator(driver.getDriver(),30, TimeUnit.SECONDS);
             PageFactory.initElements(appiumFieldDecorator, this);
         }else{
             PageFactory.initElements(new AjaxElementLocatorFactory(TestWebDriver.getDriver(), 10), this);

@@ -2,6 +2,7 @@ package com.cat.delta.pages;
 
 import com.cat.delta.driver.TestWebDriver;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,27 +24,31 @@ public class ShopAndBookPage extends BasePage{
     @FindBy(css=".destination")
     private WebElement destinationCity;
 
+
     @iOSFindBy(xpath = "//XCUIElementTypeSearchField")
     @FindBy(css="#predictive_airport_code")
+    @AndroidFindBy(id="city_search_edit_text_predictive_city_search")
     private WebElement airportSearchBox;
 
-
+    @AndroidFindBy(xpath="//android.widget.TextView[2]")
     @iOSFindBy(xpath="//XCUIElementTypeCell[1]")
     @FindBy(css="#matched_predictive_airport_codes_list li:nth-child(1)")
     private WebElement airportSearchResultList;
 
-
+    @AndroidFindBy(id="calendar_right_arrow")
     @iOSFindBy(id="ArrowRight")
     @FindBy(css=".next")
     private List<WebElement> nextArrowOnCalendar;
 
 
     @iOSFindBy(id="15")
+    @AndroidFindBy(xpath="//android.widget.TextView[18]")
     @FindBy(css=".days div:nth-child(17)")
     private WebElement oneWayTripDate;
 
 
     @iOSFindBy(id="ApplyActive")
+    @AndroidFindBy(id="apply_button")
     private WebElement selectDateIcon;
 
     @FindBy(css=".outbound_date_input")
