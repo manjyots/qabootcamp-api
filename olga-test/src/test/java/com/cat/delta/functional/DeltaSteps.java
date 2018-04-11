@@ -38,6 +38,7 @@ public class DeltaSteps extends ManageTest {
         testWebDriver.findElement(By.xpath("//input[@class='destination']")).click();
         testWebDriver.waitForPageToLoad();
         testWebDriver.findElement(By.id("predictive_airport_code")).sendKeys("Ohare");
+        testWebDriver.waitForPageToLoad();
         testWebDriver.findElement(By.xpath("//a[contains(text(),'Ohare')]")).click();
 
         Assert.assertEquals(testWebDriver.findElement(By.xpath("//input[@class='destination']")).getAttribute("value"), "ORD");
@@ -47,11 +48,11 @@ public class DeltaSteps extends ManageTest {
         testWebDriver.waitForPageToLoad();
         testWebDriver.findElement(By.xpath("//div[contains(text(),'11')]")).click();
 
-        Assert.assertEquals(testWebDriver.findElement(By.id("outbound_date_input_0")).getAttribute("data-date-value"), "2017-12-11");
+        Assert.assertEquals(testWebDriver.findElement(By.id("outbound_date_input_0")).getAttribute("data-date-value"), "2018-04-11");
 
         testWebDriver.findElement(By.id("cal_icon_inbound_date")).click();
         testWebDriver.waitForPageToLoad();
-        testWebDriver.findElement(By.xpath("//div[@id='inbound_date_input_datepicker']/div[@class='calendar']/div[@class='days']/div[@date='2017-12-30']")).click();
+        testWebDriver.findElement(By.xpath("//div[@id='inbound_date_input_datepicker']/div[@class='calendar']/div[@class='days']/div[@date='2018-04-30']")).click();
 
 
         testWebDriver.findElement(By.id("search")).click();

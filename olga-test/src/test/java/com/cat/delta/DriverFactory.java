@@ -40,11 +40,14 @@ public class DriverFactory {
 
     private WebDriver createFirefoxDriver() throws IOException {
 
-        System.setProperty("webdriver.gecko.driver",new File("/olga-test/src/test/resources/geckodriver").getAbsolutePath());
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("marionette", false);
-        WebDriver driver = new FirefoxDriver(capabilities);
-        return driver;
+//        System.setProperty("webdriver.gecko.driver",new File("src/test/resources/geckodriver").getAbsolutePath());
+//        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+//        capabilities.setCapability("marionette", false);
+//        WebDriver driver = new FirefoxDriver(capabilities);
+//        return driver;
+
+        System.setProperty("webdriver.gecko.driver","src/test/resources/geckodriver");
+        return  new FirefoxDriver();
     }
 
 
